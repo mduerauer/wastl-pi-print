@@ -9,3 +9,6 @@ XML_URL="$BASE_URL/einsatz.ashx?f=xml"
 
 COOKIE_FILE=$PIPR_HOME/var/wastl.cookies
 XSL_FILE=$PIPR_HOME/etc/wastl.xsl
+TEMP_DIR=$PIPR_HOME/var/tmp
+HTML_DIR=$PIPR_HOME/var/html
+PDF_DIR=$PIPR_HOME/var/pdf

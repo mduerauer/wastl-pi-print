@@ -15,4 +15,4 @@ fi
 
 echo $XML_URL
 
-apt-get install xsltproc curl
+apt-get install xsltproc curl wkhtmltopdf xvfb
