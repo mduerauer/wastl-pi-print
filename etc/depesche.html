@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../usr/share/openlayers/ol.css" />
     <link rel="stylesheet" href="../usr/share/styles/depesche.css" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 </head>
 <body>
 
@@ -21,8 +21,6 @@
                     <p class="text-right">2016-12-28 11:01:00</p>
                 </div>
             </div>
-
-
         </div>
     </header>
 
@@ -105,17 +103,18 @@
         // * Use 'bmaphidpi' layer (pixel ratio 2) for device pixel ratio > 1
         // * Use 'geolandbasemap' layer (pixel ratio 1) for device pixel ratio == 1
         var hiDPI = ol.has.DEVICE_PIXEL_RATIO > 1;
-        var layer = hiDPI ? 'bmaphidpi' : 'geolandbasemap';
-        var tilePixelRatio = hiDPI ? 2 : 1;
+        //var layer = hiDPI ? 'bmaphidpi' : 'geolandbasemap';
+        var layer = 'bmaphidpi';
+        //var tilePixelRatio = hiDPI ? 2 : 1;
+        var tilePixelRatio = 2;
 
         var map = new ol.Map({
             target: 'map',
             view: new ol.View({
                 center: [1823849, 6143760],
-                zoom: 11
+                zoom: 19
             })
         });
-
 
         $.ajax(capabilitiesUrl).then(function(response) {
             var result = new ol.format.WMTSCapabilities().read(response);
@@ -130,8 +129,6 @@
                 source: new ol.source.WMTS(options)
             }));
         });
-
-
 
     </script>
 </body>
