@@ -13,6 +13,5 @@ if [ -f $ENV_FILE ]; then
         source $ENV_FILE
 fi
 
-echo $XML_URL
-
-apt-get install xsltproc curl wkhtmltopdf xvfb
+PACKAGES="xsltproc curl wkhtmltopdf xvfb cups system-config-printer"
+apt-get install $PACKAGES
