@@ -8,4 +8,10 @@ if [ -f $ENV_FILE ]; then
 	source $ENV_FILE
 fi
 
-curl -b $COOKIE_FILE -c $COOKIE_FILE $DEMO_XML_URL
+TEMP_FILE=`tempfile -p wastl-`
+
+curl -s -b $COOKIE_FILE -c $COOKIE_FILE $DEMO_XML_URL > $TEMP_FILE
+
+sed -i "s/utf\-16/utf\-8/g" $TEMP_FILE
+
+xsltproc $XSL_FILE $TEMP_FILE

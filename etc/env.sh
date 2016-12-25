@@ -8,3 +8,4 @@ DEMO_XML_URL="$BASE_URL/demo.ashx?demo=3&f=xml"
 XML_URL="$BASE_URL/einsatz.ashx?f=xml"
 
 COOKIE_FILE=$PIPR_HOME/var/wastl.cookies
+XSL_FILE=$PIPR_HOME/etc/wastl.xsl
