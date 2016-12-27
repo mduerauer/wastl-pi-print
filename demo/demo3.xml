@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-16"?>
+<InfoscreenModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CurrentState>data</CurrentState>
+  <EinsatzData>
+    <Einsatz>
+      <EinsatzID>KS 0815</EinsatzID>
+      <Status>2</Status>
+      <Alarmstufe>T1</Alarmstufe>
+      <Meldebild>Fahrzeugbergung</Meldebild>
+      <Nummer1>15</Nummer1>
+      <Plz>3500</Plz>
+      <Strasse>Kremstalstraße</Strasse>
+      <Ort>Krems</Ort>
+      <Abschnitt>BasisAbschnitt</Abschnitt>
+      <Bemerkung />
+      <EinsatzErzeugt>2016-12-27T20:02:52.2101412+01:00</EinsatzErzeugt>
+      <Melder>Franz Müller</Melder>
+      <MelderTelefon>06641234567</MelderTelefon>
+      <EinsatzNummer>1</EinsatzNummer>
+      <Dispositionen>
+        <Disposition>
+          <Name>KS-Krems Hauptwache Schleife 3</Name>
+          <EldisId xsi:nil="true" />
+          <IsEigenalarmiert>true</IsEigenalarmiert>
+          <DispoTime>2012-05-10T08:55:00</DispoTime>
+          <AlarmTime xsi:nil="true" />
+          <AusTime>2012-05-10T08:58:00</AusTime>
+          <EinTime>2012-05-10T09:30:00</EinTime>
+          <IsBackground>false</IsBackground>
+        </Disposition>
+      </Dispositionen>
+      <Rsvp>
+        <Yes>14</Yes>
+        <No>4</No>
+        <AlreadyVotedAnswer xsi:nil="true" />
+      </Rsvp>
+    </Einsatz>
+    <Einsatz>
+      <EinsatzID>KS 122</EinsatzID>
+      <Status>4</Status>
+      <Alarmstufe>B1</Alarmstufe>
+      <Meldebild>TUS- od. Infranet-Alarm</Meldebild>
+      <Nummer1>3</Nummer1>
+      <Plz>3500</Plz>
+      <Strasse>Pulverturmgasse</Strasse>
+      <Ort>Krems</Ort>
+      <Abschnitt>BasisAbschnitt</Abschnitt>
+      <Bemerkung />
+      <EinsatzErzeugt>2016-12-27T20:02:52.2101412+01:00</EinsatzErzeugt>
+      <Melder>Christian Brandstifter</Melder>
+      <MelderTelefon>122</MelderTelefon>
+      <EinsatzNummer>1</EinsatzNummer>
+      <Dispositionen>
+        <Disposition>
+          <Name>KS-Krems Hauptwache Schleife 1</Name>
+          <EldisId xsi:nil="true" />
+          <IsEigenalarmiert>true</IsEigenalarmiert>
+          <DispoTime>2012-05-10T08:55:00</DispoTime>
+          <AlarmTime xsi:nil="true" />
+          <AusTime>2012-05-10T08:58:00</AusTime>
+          <EinTime>2012-05-10T09:30:00</EinTime>
+          <IsBackground>false</IsBackground>
+        </Disposition>
+      </Dispositionen>
+      <Rsvp>
+        <Yes>2</Yes>
+        <No>16</No>
+        <AlreadyVotedAnswer xsi:nil="true" />
+      </Rsvp>
+    </Einsatz>
+    <Einsatz>
+      <EinsatzID>KS 1234</EinsatzID>
+      <Status>4</Status>
+      <Alarmstufe>S2</Alarmstufe>
+      <Meldebild>Chlorgasaustritt</Meldebild>
+      <Nummer1 />
+      <Plz>3500</Plz>
+      <Strasse>Strandbadstraße</Strasse>
+      <Ort>Krems</Ort>
+      <Abschnitt>BasisAbschnitt</Abschnitt>
+      <Objekt>Badearena Krems</Objekt>
+      <Bemerkung />
+      <EinsatzErzeugt>2016-12-27T20:02:52.2101412+01:00</EinsatzErzeugt>
+      <Melder>Bademeister</Melder>
+      <MelderTelefon>siehe Telefonbuch</MelderTelefon>
+      <EinsatzNummer>1</EinsatzNummer>
+      <Dispositionen>
+        <Disposition>
+          <Name>KS-Generalalarm</Name>
+          <EldisId xsi:nil="true" />
+          <IsEigenalarmiert>true</IsEigenalarmiert>
+          <DispoTime>2012-05-10T08:55:00</DispoTime>
+          <AlarmTime xsi:nil="true" />
+          <AusTime>2012-05-10T08:58:00</AusTime>
+          <EinTime>2012-05-10T09:30:00</EinTime>
+          <IsBackground>false</IsBackground>
+        </Disposition>
+        <Disposition>
+          <Name>KS-Schadstoffgruppe</Name>
+          <EldisId xsi:nil="true" />
+          <IsEigenalarmiert>false</IsEigenalarmiert>
+          <DispoTime>2012-05-10T09:10:00</DispoTime>
+          <AlarmTime>2012-05-10T09:10:00</AlarmTime>
+          <AusTime>2012-05-10T09:15:00</AusTime>
+          <EinTime>2012-05-10T09:30:00</EinTime>
+          <IsBackground>false</IsBackground>
+        </Disposition>
+        <Disposition>
+          <Name>BTF Dynea-Chemiepark</Name>
+          <EldisId xsi:nil="true" />
+          <IsEigenalarmiert>false</IsEigenalarmiert>
+          <DispoTime>2012-05-10T09:10:00</DispoTime>
+          <AlarmTime>2012-05-10T09:10:00</AlarmTime>
+          <AusTime>2012-05-10T09:15:00</AusTime>
+          <EinTime>2012-05-10T09:30:00</EinTime>
+          <IsBackground>false</IsBackground>
+        </Disposition>
+      </Dispositionen>
+      <Rsvp>
+        <Yes>0</Yes>
+        <No>0</No>
+        <AlreadyVotedAnswer xsi:nil="true" />
+      </Rsvp>
+    </Einsatz>
+  </EinsatzData>
+</InfoscreenModel>
