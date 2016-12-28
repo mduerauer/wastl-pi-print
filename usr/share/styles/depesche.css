@@ -3,10 +3,14 @@ body {
 }
 
 .container {
-    border: 1px solid darkgray;
-    border-collapse: collapse;
+    border-bottom: 1px solid darkgray;
     background-color: white;
-    padding-top: 15px;
+    padding: 15px;
+}
+
+.alarmstufe {
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .text-right {
@@ -15,7 +19,16 @@ body {
 
 .map {
     width: 100%;
-    min-width: 600px;
-    min-height: 600px;
-    height: 600px;
+    height: auto;
+    padding-bottom: 15px;
+}
+
+@media print {
+  .row {
+      page-break-inside: avoid;
+  }
+    html,
+    body {
+        font-size: 0.8em;
+    }
 }

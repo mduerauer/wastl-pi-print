@@ -27,18 +27,17 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-10">
                 <h1>Fahrzeugbergung <small>KS0815</small></h1>
             </div>
-            <div class="col-xs-4">
-                <div class="alert alert-success" role="alert">
+            <div class="col-xs-2">
+                <div class="alert alert-success alarmstufe" role="alert">
                     T2
                 </div>
             </div>
         </div>
 
         <div class="row">
-
             <div class="col-xs-6" id="einsatzort">
                 <h3>Einsatzort</h3>
                 <table class="table">
@@ -55,8 +54,19 @@
                         <td>{{ Bemerkung }}</td>
                     </tr>
                 </table>
-            </div>
 
+                <h3>Melder</h3>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ Melder }}</td>
+                    </tr>
+                    <tr>
+                        <th>Erreichbarkeit</th>
+                        <td>{{ MelderTelefon }}</td>
+                    </tr>
+                </table>
+            </div>
             <div class="col-xs-6" id="einsatzdaten">
                 <h3>Einsatzdaten</h3>
                 <table class="table">
@@ -73,16 +83,52 @@
                         <td>{{ Meldebild }}</td>
                     </tr>
                 </table>
+
+                <h3>Alarmierte Einheiten</h3>
+                <table class="table">
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Name</th>
+                        <th>Uhrzeit</th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td>{{ Einheit 1 }}</td>
+                        <td>2016-12-28 00:01:00</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>{{ Einheit 2 }}</td>
+                        <td>2016-12-28 00:01:00</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>{{ Einheit 3 }}</td>
+                        <td>2016-12-28 00:01:00</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
         <div class="row">
-
             <div class="col-xs-12">
-                <h3>Karte</h3>
-                <div class="map" id="map"></div>
+                <h3>Detailansicht</h3>
+                <div class="map" id="map-detail"></div>
             </div>
+        </div>
 
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Detailansicht (Orthofoto)</h3>
+                <div class="map" id="map-photo"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Übersicht</h3>
+                <div class="map" id="map-overview"></div>
+            </div>
         </div>
 
     </div>
@@ -108,26 +154,81 @@
         //var tilePixelRatio = hiDPI ? 2 : 1;
         var tilePixelRatio = 2;
 
-        var map = new ol.Map({
-            target: 'map',
+        var mapDetail = new ol.Map({
+            target: 'map-detail',
             view: new ol.View({
                 center: [1823849, 6143760],
                 zoom: 19
-            })
+            }
+            ),
+            controls: [],
+            interactions: []
+        });
+
+        var mapPhoto = new ol.Map({
+            target: 'map-photo',
+            view: new ol.View({
+                    center: [1823849, 6143760],
+                    zoom: 19
+                }
+            ),
+            controls: [],
+            interactions: []
+        });
+
+        var mapOverview = new ol.Map({
+            target: 'map-overview',
+            view: new ol.View({
+                    center: [1823849, 6143760],
+                    zoom: 17
+                }
+            ),
+            controls: [],
+            interactions: []
         });
 
         $.ajax(capabilitiesUrl).then(function(response) {
             var result = new ol.format.WMTSCapabilities().read(response);
-            var options = ol.source.WMTS.optionsFromCapabilities(result, {
+
+            var optionsMap = ol.source.WMTS.optionsFromCapabilities(result, {
                 layer: layer,
                 matrixSet: 'google3857',
                 requestEncoding: 'REST',
                 style: 'normal'
             });
-            options.tilePixelRatio = tilePixelRatio;
-            map.addLayer(new ol.layer.Tile({
-                source: new ol.source.WMTS(options)
+
+            var optionsPhoto = ol.source.WMTS.optionsFromCapabilities(result, {
+                layer: 'bmaporthofoto30cm',
+                matrixSet: 'google3857',
+                requestEncoding: 'REST',
+                style: 'normal'
+            });
+
+            var optionsPhotoOverlay = ol.source.WMTS.optionsFromCapabilities(result, {
+                layer: 'bmapoverlay',
+                matrixSet: 'google3857',
+                requestEncoding: 'REST',
+                style: 'normal'
+            });
+
+            optionsMap.tilePixelRatio = tilePixelRatio;
+
+            mapDetail.addLayer(new ol.layer.Tile({
+                source: new ol.source.WMTS(optionsMap)
             }));
+
+            mapOverview.addLayer(new ol.layer.Tile({
+                source: new ol.source.WMTS(optionsMap)
+            }));
+
+            mapPhoto.addLayer(new ol.layer.Tile({
+                source: new ol.source.WMTS(optionsPhoto)
+            }));
+
+            mapPhoto.addLayer(new ol.layer.Tile({
+                source: new ol.source.WMTS(optionsPhotoOverlay)
+            }));
+
         });
 
     </script>
