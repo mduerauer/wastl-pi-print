@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Depesche</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="../usr/share/styles/bootstrap.min.css" />
     <link rel="stylesheet" href="../usr/share/openlayers/ol.css" />
     <link rel="stylesheet" href="../usr/share/styles/depesche.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
 
@@ -139,9 +140,14 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="../usr/share/openlayers/ol-debug.js"></script>
+    <script src="../usr/share/jquery/jquery-3.1.1.min.js"></script>
+    <script src="../usr/share/openlayers/ol.js"></script>
     <script type="text/javascript">
+
+
+        var latLng = [15.565833, 48.258598];
+
+        var coords = ol.proj.fromLonLat(latLng);
 
         var capabilitiesUrl = 'http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml';
 
@@ -157,7 +163,7 @@
         var mapDetail = new ol.Map({
             target: 'map-detail',
             view: new ol.View({
-                center: [1823849, 6143760],
+                center: coords,
                 zoom: 19
             }
             ),
@@ -168,7 +174,7 @@
         var mapPhoto = new ol.Map({
             target: 'map-photo',
             view: new ol.View({
-                    center: [1823849, 6143760],
+                    center: coords,
                     zoom: 19
                 }
             ),
@@ -179,13 +185,45 @@
         var mapOverview = new ol.Map({
             target: 'map-overview',
             view: new ol.View({
-                    center: [1823849, 6143760],
+                    center: coords,
                     zoom: 17
                 }
             ),
             controls: [],
             interactions: []
         });
+
+        var iconFeatures=[];
+
+        var iconFeature = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.transform(latLng, 'EPSG:4326',
+                'EPSG:3857'))
+        });
+
+        iconFeatures.push(iconFeature);
+
+        var vectorSource = new ol.source.Vector({
+            features: iconFeatures //add an array of features
+        });
+
+        var iconStyle = new ol.style.Style({
+            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                anchor: [0, 0],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'pixels',
+                opacity: 0.75,
+                src: '../usr/share/images/pointer3.png'
+            }))
+        });
+
+
+        var vectorLayer = new ol.layer.Vector({
+            source: vectorSource,
+            style: iconStyle
+        });
+
+
+
 
         $.ajax(capabilitiesUrl).then(function(response) {
             var result = new ol.format.WMTSCapabilities().read(response);
@@ -217,9 +255,14 @@
                 source: new ol.source.WMTS(optionsMap)
             }));
 
+
+            mapDetail.addLayer(vectorLayer);
+
             mapOverview.addLayer(new ol.layer.Tile({
                 source: new ol.source.WMTS(optionsMap)
             }));
+
+            mapOverview.addLayer(vectorLayer);
 
             mapPhoto.addLayer(new ol.layer.Tile({
                 source: new ol.source.WMTS(optionsPhoto)
@@ -228,6 +271,9 @@
             mapPhoto.addLayer(new ol.layer.Tile({
                 source: new ol.source.WMTS(optionsPhotoOverlay)
             }));
+
+
+            mapPhoto.addLayer(vectorLayer);
 
         });
 
