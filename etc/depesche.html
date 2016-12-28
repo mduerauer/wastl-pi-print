@@ -147,9 +147,13 @@
 
         var latLng = [15.565833, 48.258598];
 
+        // https://www.osmhydrant.org/overpass/fire-water-utilities/15.548999011516573,48.256573154547375,15.578851997852322,48.25986678576577
+
         var coords = ol.proj.fromLonLat(latLng);
 
         var capabilitiesUrl = 'http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml';
+
+        var hydrantBaseUrl = 'https://www.osmhydrant.org/overpass/fire-water-utilities/';
 
         // HiDPI support:
         // * Use 'bmaphidpi' layer (pixel ratio 2) for device pixel ratio > 1
@@ -224,7 +228,6 @@
 
 
 
-
         $.ajax(capabilitiesUrl).then(function(response) {
             var result = new ol.format.WMTSCapabilities().read(response);
 
@@ -275,6 +278,17 @@
 
             mapPhoto.addLayer(vectorLayer);
 
+        });
+
+        var extent = mapOverview.getView().calculateExtent(mapOverview.getSize());
+        var upperLeft = ol.proj.toLonLat([extent[0], extent[1]]);
+        var lowerRight = ol.proj.toLonLat([extent[2], extent[3]]);
+        var hydrantUrl = hydrantBaseUrl + upperLeft[0] + "," + upperLeft[1] + "," + lowerRight[0] + ',' + lowerRight[1];
+
+        $.ajax(hydrantUrl).then(function(response) {
+            $.each( response.elements, function( key, value ) {
+                console.log( key,value );
+            });
         });
 
     </script>
