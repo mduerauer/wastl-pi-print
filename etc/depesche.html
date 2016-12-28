@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depesche</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../usr/share/openlayers/ol.css" />
+    <link rel="stylesheet" href="../usr/share/styles/depesche.css" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> -->
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Freiwillige Feuerwehr Karlstetten</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-right">2016-12-28 11:01:00</p>
+                </div>
+            </div>
+
+
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Fahrzeugbergung <small>KS0815</small></h1>
+            </div>
+            <div class="col-md-4">
+                <div class="alert alert-success" role="alert">
+                    T2
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6" id="einsatzort">
+                <h3>Einsatzort</h3>
+                <table class="table">
+                    <tr>
+                        <th>Straße</th>
+                        <td>{{ Strasse }} {{ Nummer 1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ort</th>
+                        <td>{{ PLZ }} {{ Ort }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bemerkung</th>
+                        <td>{{ Bemerkung }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-6" id="einsatzdaten">
+                <h3>Einsatzdaten</h3>
+                <table class="table">
+                    <tr>
+                        <th>Einsatz-ID</th>
+                        <td>{{ EinsatzID }}</td>
+                    </tr>
+                    <tr>
+                        <th>Alarmstufe</th>
+                        <td>{{ Alarmstufe }}</td>
+                    </tr>
+                    <tr>
+                        <th>Meldebild</th>
+                        <td>{{ Meldebild }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <h3>Karte</h3>
+                <div class="map" id="map"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="small">Printed on {{ Host }} by </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="../usr/share/openlayers/ol-debug.js"></script>
+    <script type="text/javascript">
+
+        var capabilitiesUrl = 'http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml';
+
+        // HiDPI support:
+        // * Use 'bmaphidpi' layer (pixel ratio 2) for device pixel ratio > 1
+        // * Use 'geolandbasemap' layer (pixel ratio 1) for device pixel ratio == 1
+        var hiDPI = ol.has.DEVICE_PIXEL_RATIO > 1;
+        var layer = hiDPI ? 'bmaphidpi' : 'geolandbasemap';
+        var tilePixelRatio = hiDPI ? 2 : 1;
+
+        var map = new ol.Map({
+            target: 'map',
+            view: new ol.View({
+                center: [1823849, 6143760],
+                zoom: 11
+            })
+        });
+
+
+        $.ajax(capabilitiesUrl).then(function(response) {
+            var result = new ol.format.WMTSCapabilities().read(response);
+            var options = ol.source.WMTS.optionsFromCapabilities(result, {
+                layer: layer,
+                matrixSet: 'google3857',
+                requestEncoding: 'REST',
+                style: 'normal'
+            });
+            options.tilePixelRatio = tilePixelRatio;
+            map.addLayer(new ol.layer.Tile({
+                source: new ol.source.WMTS(options)
+            }));
+        });
+
+
+
+    </script>
+</body>
+</html>

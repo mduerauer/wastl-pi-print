@@ -1,0 +1,19 @@
+body {
+    background-color: lightgray;
+}
+
+.container {
+    border: 1px solid darkgray;
+    border-collapse: collapse;
+    background-color: white;
+    padding-top: 15px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.map {
+    width: 100%;
+    min-height: 600px;
+}
