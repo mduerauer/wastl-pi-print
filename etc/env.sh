@@ -9,3 +9,6 @@ COOKIE_FILE="$PIPR_HOME/var/wastl.cookies"
 XSL_FILE="$PIPR_HOME/etc/depesche.xsl"
 
 BIN_DIR=$PIPR_HOME/bin
+TEMP_DIR=$PIPR_HOME/var/tmp
+HTML_DIR=$PIPR_HOME/var/html
+PDF_DIR=$PIPR_HOME/var/pdf

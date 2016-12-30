@@ -7,9 +7,9 @@
                 <meta charset="UTF-8" />
                 <title>Depesche</title>
 
-                <link rel="stylesheet" href="../usr/share/styles/bootstrap.min.css" />
-                <link rel="stylesheet" href="../usr/share/openlayers/ol.css" />
-                <link rel="stylesheet" href="../usr/share/styles/depesche.css" />
+                <link rel="stylesheet" href="../../usr/share/styles/bootstrap.min.css" />
+                <link rel="stylesheet" href="../../usr/share/openlayers/ol.css" />
+                <link rel="stylesheet" href="../../usr/share/styles/depesche.css" />
 
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </head>
@@ -149,9 +149,9 @@
                     </div>
                 </footer>
 
-                <script src="../usr/share/jquery/jquery-3.1.1.min.js"></script>
-                <script src="../usr/share/openlayers/ol.js"></script>
-                <script src="../usr/share/scripts/depesche.js"></script>
+                <script src="../../usr/share/jquery/jquery-3.1.1.min.js"></script>
+                <script src="../../usr/share/openlayers/ol.js"></script>
+                <script src="../../usr/share/scripts/depesche.js"></script>
                 <script type="text/javascript">
                     var address = $('textarea#einsatz-adresse').val();
                     resolveCoordinates(address);

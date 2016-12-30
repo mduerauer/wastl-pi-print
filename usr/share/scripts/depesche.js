@@ -72,7 +72,7 @@ var loadMaps = function() {
             anchorXUnits: 'pixels',
             anchorYUnits: 'pixels',
             opacity: 0.75,
-            src: '../usr/share/images/pointer.png'
+            src: '../../usr/share/images/pointer.png'
         }))
     });
 
@@ -146,7 +146,7 @@ var loadHydrants = function() {
             anchorXUnits: 'pixels',
             anchorYUnits: 'pixels',
             opacity: 0.75,
-            src: '../usr/share/images/hydrant.png'
+            src: '../../usr/share/images/hydrant.png'
         }))
     });
 
@@ -235,7 +235,6 @@ var resolveCoordinates = function(address ) {
 
     $.ajax(geocodeUrl).then(function (response) {
 
-        console.log("geocode", response);
         if(response.status == "OK") {
 
             latLng = [
