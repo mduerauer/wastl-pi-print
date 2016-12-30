@@ -7,7 +7,7 @@ if [ "$USER" != "root" ]; then
 	exit 1
 fi
 
-ENV_FILE="$DIR/etc/env.sh"
+ENV_FILE="$DIR/../etc/env.sh"
 
 if [ -f $ENV_FILE ]; then
         source $ENV_FILE
