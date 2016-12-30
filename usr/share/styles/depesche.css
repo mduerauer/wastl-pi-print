@@ -23,6 +23,10 @@ body {
     padding-bottom: 15px;
 }
 
+.hidden {
+    display: none;
+}
+
 @media print {
   .row {
       page-break-inside: avoid;

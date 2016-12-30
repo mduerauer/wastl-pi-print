@@ -18,6 +18,6 @@ sed -i "s/utf\-16/utf\-8/g" $TEMP_FILE
 
 xsltproc $XSL_FILE $TEMP_FILE > $HTML_FILE
 
-$BIN_DIR/wkhtmltopdf-xvfb $HTML_FILE $PDF_FILE
+$BIN_DIR/wkhtmltopdf-xvfb --window-status ready_to_print $HTML_FILE $PDF_FILE
 
 lp $PDF_FILE
