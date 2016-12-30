@@ -13,4 +13,4 @@ if [ -f $ENV_FILE ]; then
         source $ENV_FILE
 fi
 
-apt-get install xsltproc curl
+apt-get install xsltproc curl cups wkhtmltopdf xvfb
