@@ -9,8 +9,8 @@ if [ -f $ENV_FILE ]; then
 fi
 
 TEMP_FILE=`tempfile -p wastl- -s .xml -d $TEMP_DIR`
-HTML_FILE=`tempfile -p wastl- -s .html -d $HTML_DIR`
-#HTML_FILE=$HTML_DIR/out.html
+#HTML_FILE=`tempfile -p wastl- -s .html -d $HTML_DIR`
+HTML_FILE="$HTML_DIR/out.html"
 PDF_FILE=`tempfile -m 0666 -p wastl- -s .pdf -d $PDF_DIR`
 
 curl -s -b $COOKIE_FILE -c $COOKIE_FILE $DEMO_XML_URL > $TEMP_FILE

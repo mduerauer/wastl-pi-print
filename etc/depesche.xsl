@@ -137,7 +137,9 @@
                             </div>
                         </div>
 
-                        <textarea class="hidden" id="einsatz-adresse"><xsl:value-of select="Strasse"/>&#160;<xsl:value-of select="Nummer1"/>,&#160;<xsl:value-of select="Plz"/>&#160;<xsl:value-of select="Ort"/>,&#160;Österreich</textarea>
+                        <textarea class="hidden" id="einsatz-adresse">
+                            <xsl:value-of select="Strasse"/>&#160;<xsl:value-of select="Nummer1"/>,&#160;<xsl:value-of select="Plz"/>&#160;<xsl:value-of select="Ort"/>,&#160;Österreich
+                        </textarea>
 
                     </div>
 
@@ -154,6 +156,7 @@
                 <script src="../../usr/share/scripts/depesche.js"></script>
                 <script type="text/javascript">
                     var address = $('textarea#einsatz-adresse').val();
+                    console.log(address);
                     resolveCoordinates(address);
                 </script>
 

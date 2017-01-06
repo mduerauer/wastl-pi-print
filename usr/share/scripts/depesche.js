@@ -237,6 +237,8 @@ var resolveCoordinates = function(address ) {
 
         if(response.status == "OK") {
 
+            console.log(response.results[0].geometry);
+
             latLng = [
                 response.results[0].geometry.location.lng,
                 response.results[0].geometry.location.lat
@@ -249,7 +251,7 @@ var resolveCoordinates = function(address ) {
             mapOverview.getView().setCenter(coords);
 
             loadMaps();
-            loadHydrants();
+            //loadHydrants();
 
         };
     });
