@@ -21,4 +21,4 @@ xsltproc $XSL_FILE $TEMP_FILE > $HTML_FILE
 
 $BIN_DIR/wkhtmltopdf-xvfb --javascript-delay 10000 --debug-javascript $HTML_FILE $PDF_FILE
 
-#lp $PDF_FILE
+lp $PDF_FILE
